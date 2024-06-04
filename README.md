@@ -9,3 +9,5 @@ After dragging the sentence to be translated, press (ALT + 1) to change it after
 작동 안하면 PapagoManger.cs 85줄 확인
 
 If it does not work, check line 85 at PapagoManger.cs
+
+<iframe width="956" height="538" src="https://www.youtube.com/embed/xK1Ni4hL-_g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
