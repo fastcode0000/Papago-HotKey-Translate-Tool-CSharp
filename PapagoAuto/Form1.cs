@@ -50,25 +50,60 @@ namespace PapagoAuto
                 bAltOrNum = false;
                 lResult = 0;
 
+                string szTitle = this.Text;
+                this.Text = $"{szTitle} Processing";
+
+
                 //이때 작업시작.
 
                 Thread.Sleep(100);
 
-                KeyManager.PressCtrlC(); //현재 창에서 복사를함.
+
+                KeyManager.PressCtrlC();
 
                 string szData = "";
-                try
+                int iAttempts = 0;
+                AutoResetEvent kEvent = new AutoResetEvent(false);
+
+                Thread kThread = new Thread(() =>
                 {
-                    szData = Clipboard.GetText();
-                }
-                catch
-                {
-                    szData = "";
-                }
+                    while (iAttempts < 100)
+                    {
+                        if (Clipboard.ContainsText())
+                        {
+                            try
+                            {
+                                szData = Clipboard.GetText();
+                                kEvent.Set();
+                                break;
+                            }
+                            catch (Exception e)
+                            {
+                                Thread.Sleep(100);
+                            }
+                        }
+                        else
+                        {
+                            Thread.Sleep(100);
+                        }
+
+                        iAttempts++;
+                    }
+                });
+
+                kThread.SetApartmentState(ApartmentState.STA);
+
+                kThread.Start();
+
+                kEvent.WaitOne();
+
+                this.Text = szTitle;
 
 
-                if (szData != null && szData != "")
+                if (szData != null && szData != "") //여기 못들어오는 경우가 있음
                 {
+
+
                     szData = szData.TrimEnd();
 
                     g_Papago.SetCountry(szData);
@@ -89,6 +124,7 @@ namespace PapagoAuto
                         TransList.Items.Add($"{szData} ({g_Papago.GetLastSourceLang()}) -> {szResult} ({g_Papago.GetLastTargetLang()})");
                     }
                 }
+
             }
             else
             {
