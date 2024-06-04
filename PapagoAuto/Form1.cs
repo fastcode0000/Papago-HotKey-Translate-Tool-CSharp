@@ -56,7 +56,7 @@ namespace PapagoAuto
 
                 //이때 작업시작.
 
-                Thread.Sleep(100);
+                //Thread.Sleep(100);
 
 
                 KeyManager.PressCtrlC();
