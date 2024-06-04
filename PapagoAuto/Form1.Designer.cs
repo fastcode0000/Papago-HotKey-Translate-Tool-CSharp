@@ -28,25 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TransList = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // TransList
             // 
-            this.textBox1.Location = new System.Drawing.Point(120, 54);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(361, 127);
-            this.textBox1.TabIndex = 0;
+            this.TransList.HideSelection = false;
+            this.TransList.Location = new System.Drawing.Point(12, 28);
+            this.TransList.Name = "TransList";
+            this.TransList.Size = new System.Drawing.Size(422, 199);
+            this.TransList.TabIndex = 0;
+            this.TransList.UseCompatibleStateImageBehavior = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Translate Log :";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 280);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(446, 243);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.TransList);
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Papago Translate Tool";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -56,7 +69,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListView TransList;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -16,6 +16,8 @@ namespace PapagoAuto
         private bool bAltOrNum;
         event KeyboardHooker.HookedKeyboardUserEventHandler HookedKeyboardNofity;
 
+        private PapagoManger g_Papago = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -24,33 +26,50 @@ namespace PapagoAuto
         {
             long lResult = 0;
 
-
-            if (vkCode == 49 && iKeyWhatHappened == 32) //ALT + 1
+            if (vkCode == '1' && iKeyWhatHappened == 32)
             {
                 bAltAndNum = true;
                 bAltOrNum = false;
                 lResult = 0;
-                textBox1.Text = "ALT + 1이 눌렸습니다.";
             }
             else if (bAltAndNum && iKeyWhatHappened == 128)
             {
                 bAltAndNum = false;
                 bAltOrNum = true;
                 lResult = 0;
-                textBox1.Text += Environment.NewLine + "1은 눌려있고 ALT가 떨어졌다.";
             }
-            else if (bAltAndNum && vkCode == 49)
+            else if (bAltAndNum && vkCode == '1')
             {
                 bAltAndNum = false;
                 bAltOrNum = true;
                 lResult = 0;
-                textBox1.Text += Environment.NewLine + "ALT는 눌려있고 1이 떨어졌다.";
             }
-            else if (!bAltAndNum && bAltOrNum && (vkCode == 49 || vkCode == 164))
+            else if (!bAltAndNum && bAltOrNum && (vkCode == '1' || vkCode == 164))
             {
                 bAltOrNum = false;
                 lResult = 0;
-                textBox1.Text += Environment.NewLine + "키 조합이 완료되었다.";
+
+                //이때 작업시작.
+
+
+
+                KeyManager.PressCtrlC(); //현재 창에서 복사를함.
+
+                string szData = Clipboard.GetText();
+                if (szData != null && szData != "")
+                {
+                    g_Papago.SetCountry(szData);
+                    string szResult = g_Papago.GetTranslateData(szData);
+                    Clipboard.SetText(szResult);
+                    KeyManager.PressCtrlV();
+
+                    if (TransList.Items.Count > 10)
+                    {
+                        TransList.Items.RemoveAt(0);
+                    }
+
+                    TransList.Items.Add($"{szData} -> {szResult}");
+                }
             }
             else
             {
@@ -65,6 +84,21 @@ namespace PapagoAuto
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            INILoader kLoader = new INILoader();
+            kLoader.SetFileName("C:\\Users\\Admin\\Desktop\\NaverTranslate.ini");
+
+            kLoader.SetTitle("common");
+
+            string szKey = kLoader.LoadString("passportkey", "");
+
+            if (szKey == "")
+            {
+                MessageBox.Show("SessionKey is null","PapagoAuto");
+                Environment.Exit(0);
+                return;
+            }
+
+            g_Papago = new PapagoManger(szKey);
             HookedKeyboardNofity += new KeyboardHooker.HookedKeyboardUserEventHandler(OnEventProcess);
             KeyboardHooker.Hook(HookedKeyboardNofity);
         }
