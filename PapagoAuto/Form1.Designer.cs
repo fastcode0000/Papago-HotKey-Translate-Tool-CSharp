@@ -41,7 +41,7 @@
             this.TransList.Size = new System.Drawing.Size(422, 199);
             this.TransList.TabIndex = 0;
             this.TransList.UseCompatibleStateImageBehavior = false;
-            this.TransList.View = System.Windows.Forms.View.Details;
+            this.TransList.View = System.Windows.Forms.View.List;
             // 
             // label1
             // 

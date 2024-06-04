@@ -86,7 +86,7 @@ namespace PapagoAuto
                             TransList.Items.RemoveAt(0);
                         }
 
-                        TransList.Items.Add($"{szData} -> {szResult}");
+                        TransList.Items.Add($"{szData} ({g_Papago.GetLastSourceLang()}) -> {szResult} ({g_Papago.GetLastTargetLang()})");
                     }
                 }
             }
@@ -108,7 +108,8 @@ namespace PapagoAuto
 
             kLoader.SetTitle("common");
 
-            string szKey = kLoader.LoadString("passportkey", "");
+            string szKey = kLoader.LoadString("passportkey", "2075b0709e3fb73e8f86dad6afc3e0535bbf732f");
+            //일단 기본값에 넣어둠
 
             if (szKey == "")
             {

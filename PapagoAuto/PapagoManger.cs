@@ -22,6 +22,37 @@ namespace PapagoAuto
             m_szSessionKey = szSessionKey;
         }
 
+        public string GetLastSourceLang()
+        {
+            if (m_szSourceLang == "ko")
+            {
+                return "Korean";
+            }
+            else if (m_szSourceLang == "en")
+            {
+                return "English";
+            }
+            else
+            {
+                return "none";
+            }
+        }
+        public string GetLastTargetLang()
+        {
+            if (m_szTargetLang == "ko")
+            {
+                return "Korean";
+            }
+            else if (m_szTargetLang == "en")
+            {
+                return "English";
+            }
+            else
+            {
+                return "none";
+            }
+        }
+
 
         public void SetCountry(string szText)
         {
