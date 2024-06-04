@@ -10,4 +10,4 @@ After dragging the sentence to be translated, press (ALT + 1) to change it after
 
 If it does not work, check line 85 at PapagoManger.cs
 
-<iframe width="956" height="538" src="https://www.youtube.com/embed/xK1Ni4hL-_g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Video Label](http://img.youtube.com/vi/xK1Ni4hL-_g/0.jpg)](https://youtu.be/xK1Ni4hL-_g?t=0s)
