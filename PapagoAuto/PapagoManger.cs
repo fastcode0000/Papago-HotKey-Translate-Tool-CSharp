@@ -62,7 +62,9 @@ namespace PapagoAuto
             string url = $"https://m.search.naver.com/p/csearch/ocontent/util/nmtProxy.naver?_callback=window.__jindo2_callback._1657&query={szText}&passportKey={m_szSessionKey}&srcLang={m_szSourceLang}&tarLang={m_szTargetLang}";
             using (WebClient client = new WebClient())
             {
+                client.Encoding = System.Text.Encoding.UTF8;
                 string response = client.DownloadString(url);
+                //string response = client.DownloadString(url);
 
                 Match match = Regex.Match(response, "\"translatedText\":\"(.*?)\"");
                 if (match.Success)
@@ -71,7 +73,7 @@ namespace PapagoAuto
                     return translatedText;
                 }
 
-                return "ERROR";
+                return "";
             }
         }
     }

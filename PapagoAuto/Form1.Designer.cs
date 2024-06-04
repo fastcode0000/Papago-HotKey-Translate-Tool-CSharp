@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.TransList = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -40,6 +41,7 @@
             this.TransList.Size = new System.Drawing.Size(422, 199);
             this.TransList.TabIndex = 0;
             this.TransList.UseCompatibleStateImageBehavior = false;
+            this.TransList.View = System.Windows.Forms.View.Details;
             // 
             // label1
             // 
@@ -57,9 +59,10 @@
             this.ClientSize = new System.Drawing.Size(446, 243);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TransList);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Papago Translate Tool";
+            this.Text = "Papago Translate Tool : [ALT + 1]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

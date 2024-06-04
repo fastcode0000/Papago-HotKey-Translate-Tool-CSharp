@@ -22,7 +22,7 @@ namespace PapagoAuto
             keybd_event(VK_CONTROL, 0, KEYEVENTF_KEYDOWN, 0);
             keybd_event(0x43, 0, KEYEVENTF_KEYDOWN, 0);
 
-            Thread.Sleep(100); //이거 딜레이 줘야 복사된다
+            Thread.Sleep(50); //이거 딜레이 줘야 복사된다
 
             keybd_event(0x43, 0, KEYEVENTF_KEYUP, 0);
             keybd_event(VK_CONTROL, 0, KEYEVENTF_KEYUP, 0);
@@ -33,7 +33,7 @@ namespace PapagoAuto
             keybd_event(VK_CONTROL, 0, KEYEVENTF_KEYDOWN, 0);
             keybd_event(0x56, 0, KEYEVENTF_KEYDOWN, 0);
 
-            Thread.Sleep(100); //이거 딜레이 줘야 복사된다
+            Thread.Sleep(50); //이거 딜레이 줘야 복사된다
 
             keybd_event(0x56, 0, KEYEVENTF_KEYUP, 0);
             keybd_event(VK_CONTROL, 0, KEYEVENTF_KEYUP, 0);

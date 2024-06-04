@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -51,24 +52,42 @@ namespace PapagoAuto
 
                 //이때 작업시작.
 
-
+                Thread.Sleep(100);
 
                 KeyManager.PressCtrlC(); //현재 창에서 복사를함.
 
-                string szData = Clipboard.GetText();
+                string szData = "";
+                try
+                {
+                    szData = Clipboard.GetText();
+                }
+                catch
+                {
+                    szData = "";
+                }
+
+
                 if (szData != null && szData != "")
                 {
+                    szData = szData.TrimEnd();
+
                     g_Papago.SetCountry(szData);
                     string szResult = g_Papago.GetTranslateData(szData);
-                    Clipboard.SetText(szResult);
-                    KeyManager.PressCtrlV();
 
-                    if (TransList.Items.Count > 10)
+                    szResult = szResult.TrimEnd();
+
+                    if (szResult != null && szResult != "")
                     {
-                        TransList.Items.RemoveAt(0);
-                    }
+                        Clipboard.SetText(szResult);
+                        KeyManager.PressCtrlV();
 
-                    TransList.Items.Add($"{szData} -> {szResult}");
+                        if (TransList.Items.Count > 10)
+                        {
+                            TransList.Items.RemoveAt(0);
+                        }
+
+                        TransList.Items.Add($"{szData} -> {szResult}");
+                    }
                 }
             }
             else
