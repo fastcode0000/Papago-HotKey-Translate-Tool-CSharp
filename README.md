@@ -9,3 +9,5 @@ After dragging the sentence to be translated, press (ALT + 1) to change it after
 작동 안하면 PapagoManger.cs 85줄 확인
 
 If it does not work, check line 85 at PapagoManger.cs
+
+[![Video Label](http://img.youtube.com/vi/xK1Ni4hL-_g/0.jpg)](https://youtu.be/xK1Ni4hL-_g?t=0s)
