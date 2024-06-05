@@ -104,7 +104,7 @@ namespace PapagoAuto
                     return translatedText;
                 }
 
-                return "";
+                return "Session Key is vaild";
             }
         }
     }

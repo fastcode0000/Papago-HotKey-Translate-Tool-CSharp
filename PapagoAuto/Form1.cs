@@ -144,7 +144,7 @@ namespace PapagoAuto
 
             kLoader.SetTitle("common");
 
-            string szKey = kLoader.LoadString("passportkey", "2075b0709e3fb73e8f86dad6afc3e0535bbf732f");
+            string szKey = kLoader.LoadString("passportkey", "0ed2674ec46884ee814527f27fd026c5821f19f5"); //이 키 하루마다 바뀜.
             //일단 기본값에 넣어둠
 
             if (szKey == "")
